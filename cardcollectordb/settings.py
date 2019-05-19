@@ -89,7 +89,7 @@ DATABASES = {
 
 
 # custome auth user model
-AUTH_USER_MODEL = 'api.models.User'
+AUTH_USER_MODEL = 'api.User'
 
 
 # Password validation
