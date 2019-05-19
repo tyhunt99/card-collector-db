@@ -1,7 +1,6 @@
 import datetime
 
 from django.core.validators import MaxValueValidator, MinValueValidator
-from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
@@ -31,7 +30,3 @@ class Card(models.Model):
     )
 
     collection = models.ManyToManyField(Collection)
-
-
-class User(AbstractUser):
-    bio = models.TextField(max_length=500, blank=True)

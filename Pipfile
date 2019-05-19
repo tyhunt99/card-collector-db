@@ -9,6 +9,7 @@ flake8 = "*"
 [packages]
 Django = "~=2.2"
 django-extensions = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.7"
