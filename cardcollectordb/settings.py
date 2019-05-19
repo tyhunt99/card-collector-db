@@ -34,6 +34,9 @@ INSTALLED_APPS = [
     # custom
     'api',
 
+    # other stuff
+    'django_extensions',
+
     # builtins
     'django.contrib.admin',
     'django.contrib.auth',
