@@ -1,8 +1,7 @@
 import datetime
 
-from django.db import models
-
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db import models
 
 
 class Collection(models.Model):
@@ -23,6 +22,7 @@ class Card(models.Model):
         ],
         help_text='Use the following format: <YYYY>',
     )
+    company = models.CharField(max_length=250)
     value = models.DecimalField(
         decimal_places=2,
         max_digits=50,
