@@ -11,29 +11,30 @@ from .serializers import UserSerializer
 
 
 class UserCreate(APIView):
-    '''
+    """
     Creates the user.
-    '''
+    """
 
-    def post(self, request, format='json'):
+    def post(self, request, format="json"):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
             if user:
                 token = Token.objects.create(user=user)
                 ret_data = serializer.data
-                ret_data['token'] = token.key
+                ret_data["token"] = token.key
                 return Response(ret_data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class SignUp(APIView):
-    '''
+    """
     User signup
-    '''
+    """
+
     renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'signup.html'
+    template_name = "signup.html"
 
     def get(self, request):
-        return render(request, 'signup.html', {'form': UserCreationForm()})
+        return render(request, "signup.html", {"form": UserCreationForm()})
