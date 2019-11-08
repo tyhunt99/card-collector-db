@@ -12,6 +12,7 @@ black = "*"
 Django = ">=2.2.3"
 django-extensions = "*"
 djangorestframework = "*"
+django-rest-auth = "*"
 
 [requires]
 python_version = "3.7"

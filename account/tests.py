@@ -13,7 +13,7 @@ class AccountsTest(APITestCase):
         )
 
         # reverse is already scoped to namespace so account: is assumed
-        self.create_url = reverse("create")
+        self.create_url = reverse("account")
 
     def test_create_user(self):
         """
@@ -31,9 +31,11 @@ class AccountsTest(APITestCase):
         self.assertEqual(get_user_model().objects.count(), 2)
         # And that we're returning a 201 created code.
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        # Additionally, we want to return the username and email upon successful creation.
+        # Additionally, we want to return the username, token, and email upon successful creation.
         self.assertEqual(response.data["username"], data["username"])
         self.assertEqual(response.data["email"], data["email"])
+        self.assertTrue("token" in response.data)
+        # Ensure the password is no returned
         self.assertFalse("password" in response.data)
 
     def test_create_user_with_short_password(self):

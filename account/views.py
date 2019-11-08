@@ -1,19 +1,16 @@
-from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render
-
 from rest_framework import status
 from rest_framework.authtoken.models import Token
-from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .serializers import UserSerializer
 
 
-class UserCreate(APIView):
-    """
-    Creates the user.
-    """
+class Account(APIView):
+
+    def get(self, request):
+        serializer = UserSerializer()
+        return Response(serializer.data)
 
     def post(self, request, format="json"):
         serializer = UserSerializer(data=request.data)
@@ -28,13 +25,38 @@ class UserCreate(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class SignUp(APIView):
+class Login(APIView):
     """
-    User signup
+    User login
     """
-
-    renderer_classes = [TemplateHTMLRenderer]
-    template_name = "signup.html"
 
     def get(self, request):
-        return render(request, "signup.html", {"form": UserCreationForm()})
+        """
+        See if session is valid
+        """
+        # return render(request, "login.html", {"form": LoginForm()})
+
+    def post(self, request):
+        """
+        Create session
+        """
+        pass
+
+    def delete(self, request):
+        """
+        End session
+        """
+        pass
+
+
+class AccountSummary(APIView):
+    """
+    User summary/home page
+    """
+
+    def get(self, request):
+        # return render(request, "login.html", {"form": LoginForm()})
+        return "OK"
+
+    def post(self, request):
+        pass
