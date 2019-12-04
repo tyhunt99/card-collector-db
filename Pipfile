@@ -7,7 +7,7 @@ verify_ssl = true
 flake8 = "*"
 
 [packages]
-Django = ">=2.2.3"
+Django = ">=2.2.8"
 django-extensions = "*"
 djangorestframework = "*"
 
